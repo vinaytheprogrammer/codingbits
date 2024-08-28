@@ -150,14 +150,10 @@
                         <option value="Backend Web Development">Backend Web Development</option>
                         <option value="Full Stack Web Development">Full Stack Web Development</option>
                         <option value="Android Development">Android Development</option>
-                        <option value="Flutter">Flutter</option>
-                        <option value="Kotlin">Kotlin</option>
                         <option value="Data Structure and Algorithms">Data Structure and Algorithms</option>
                         <option value="C Programming">C Programming</option>
                         <option value="C++ Programming">C++ Programming</option>
                         <option value="JAVA Programming">JAVA Programming</option>
-                        <option value="Python Programming">Python Programming</option>
-                        <option value="Azure Cloud">Azure Cloud</option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 btn-custom">Submit</button>
@@ -210,7 +206,7 @@
 
                 if (response.status === 201) {
                     alert('User details saved successfully');
-                    window.location.href = 'success.html';  // Redirect to the home page
+                    window.location.href = '/success.html';  // Redirect to the home page
                 } else {
                     alert('There was an error connecting to the server. Please try again later.');
                 }
