@@ -6,7 +6,11 @@ const app = express();
 const path = require('path');
 
 // Middleware
-app.use(cors());  // Enable CORS for all routes
+app.use(cors({
+  origin: "*", // or specify your front-end URL if you want to restrict access
+  methods: "GET,POST,PUT,DELETE",
+  allowedHeaders: "Content-Type"
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static('public'));  // Serve static files from the 'public' folder
@@ -42,16 +46,28 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("User", userSchema);
 
 // Route to handle form submission
+// app.post("/submit-details", async (req, res) => {
+//   try {
+//     const user = new User(req.body);
+//     await user.save();
+//     res.status(201).send("User details saved successfully");
+//   } catch (error) {
+//     console.error(error);
+//     res.status(400).send("Error saving user details");
+//   }
+// });
+
 app.post("/submit-details", async (req, res) => {
   try {
     const user = new User(req.body);
     await user.save();
     res.status(201).send("User details saved successfully");
   } catch (error) {
-    console.error(error);
+    console.error('Error saving user details:', error);
     res.status(400).send("Error saving user details");
   }
 });
+
 
 // Start Server
 const PORT = process.env.PORT || 3001;
